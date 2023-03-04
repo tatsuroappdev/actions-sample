@@ -1,12 +1,21 @@
 name: learn-github-actions
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "this is a pen."
-      - uses: actions/checkout@v2
-      - run: |
+      - name: execute echo command
+        run: echo "this is a pen."
+      - name: execute checkout
+        uses: actions/checkout@v2
+      - name: execute ls
+        run: |
           ls -al
           cd .github/workflows/
           ls -al
